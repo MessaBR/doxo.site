@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doxo — Seu negócio online. Do jeito certo.</title>
+<meta name="description" content="Sites profissionais e hospedagem para MEI e pequenas empresas. Presença digital que gera clientes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --roxo:      #3C3489;
+    --roxo-mid:  #534AB7;
+    --roxo-lite: #AFA9EC;
+    --roxo-dark: #26215C;
+    --off-white: #F1EFE8;
+    --gray:      #888780;
+    --dark:      #1a1814;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── UTILIDADES ─── */
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--roxo);
+    padding: 0 40px;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-icon {
+    width: 38px; height: 38px;
+    background: var(--roxo-mid);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-icon svg { width: 22px; height: 22px; }
+
+  .nav-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: white; letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    font-size: 14px; font-weight: 400;
+    transition: color .2s;
+  }
+
+  .nav-links a:hover { color: white; }
+
+  .nav-cta {
+    background: white;
+    color: var(--roxo) !important;
+    font-weight: 500 !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity .2s;
+  }
+
+  .nav-cta:hover { opacity: .88; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--roxo-dark);
+    padding: 148px 40px 100px;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-waves {
+    position: absolute; inset: 0;
+    pointer-events: none; overflow: hidden;
+  }
+
+  .hero-waves svg { width: 100%; height: 100%; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(175,169,236,.15);
+    border: 1px solid rgba(175,169,236,.3);
+    border-radius: 40px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 500;
+    color: var(--roxo-lite);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0; animation: fadeUp .6s .1s forwards;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--roxo-lite);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: white;
+    margin-bottom: 8px;
+    opacity: 0; animation: fadeUp .6s .2s forwards;
+  }
+
+  .hero h1 span {
+    color: var(--roxo-lite);
+  }
+
+  .hero-sub {
+    font-size: 18px; font-weight: 300;
+    color: rgba(255,255,255,.6);
+    line-height: 1.6;
+    margin: 24px 0 44px;
+    max-width: 480px;
+    opacity: 0; animation: fadeUp .6s .35s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp .6s .5s forwards;
+  }
+
+  .btn-primary {
+    background: var(--roxo-mid);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px; font-weight: 500;
+    border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #6258c8; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--roxo-lite);
+    padding: 16px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px; font-weight: 400;
+    border: 1px solid rgba(175,169,236,.35);
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--roxo-lite); color: white; }
+
+  .hero-stats {
+    position: absolute; right: 80px; bottom: 80px;
+    display: flex; gap: 48px;
+    opacity: 0; animation: fadeUp .6s .7s forwards;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800;
+    color: white; letter-spacing: -1px;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px; color: rgba(255,255,255,.5);
+    letter-spacing: .5px;
+  }
+
+  /* ─── SERVIÇOS ─── */
+  .services {
+    padding: 100px 40px;
+    background: var(--off-white);
+  }
+
+  .section-tag {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--roxo-mid);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; letter-spacing: -1.5px;
+    color: var(--roxo-dark);
+    line-height: 1.1;
+    margin-bottom: 56px;
+  }
+
+  .section-title span { color: var(--roxo-mid); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 18px;
+    padding: 40px 36px;
+    border: 1px solid rgba(60,52,137,.08);
+    transition: transform .2s, box-shadow .2s;
+    position: relative; overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--roxo-mid);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s;
+  }
+
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(60,52,137,.1); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    background: rgba(83,74,183,.1);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .service-icon svg { width: 26px; height: 26px; }
+
+  .service-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--roxo-dark);
+    margin-bottom: 12px; letter-spacing: -.5px;
+  }
+
+  .service-desc {
+    font-size: 14px; line-height: 1.7;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .service-items {
+    list-style: none; display: flex; flex-direction: column; gap: 8px;
+  }
+
+  .service-items li {
+    font-size: 13px; color: var(--roxo-dark);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .service-items li::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--roxo-mid);
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  .service-price {
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid rgba(60,52,137,.08);
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--roxo);
+  }
+
+  .service-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 400;
+    color: var(--gray);
+  }
+
+  /* ─── COMO FUNCIONA ─── */
+  .how {
+    background: var(--roxo-dark);
+    padding: 100px 40px;
+  }
+
+  .how .section-tag { color: var(--roxo-lite); }
+  .how .section-title { color: white; margin-bottom: 64px; }
+  .how .section-title span { color: var(--roxo-lite); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,.06);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .step {
+    background: var(--roxo-dark);
+    padding: 40px 32px;
+    position: relative;
+  }
+
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute; right: 0; top: 40px; bottom: 40px;
+    width: 1px;
+    background: rgba(255,255,255,.08);
+  }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px; font-weight: 800;
+    color: rgba(175,169,236,.15);
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+  }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: white; margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 13px; line-height: 1.65;
+    color: rgba(255,255,255,.5);
+  }
+
+  /* ─── CASES ─── */
+  .cases {
+    padding: 100px 40px;
+    background: var(--off-white);
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .case-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(60,52,137,.07);
+    transition: transform .2s;
+  }
+
+  .case-card:hover { transform: translateY(-3px); }
+
+  .case-header {
+    background: var(--roxo);
+    padding: 28px 28px 22px;
+  }
+
+  .case-segment {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--roxo-lite);
+    margin-bottom: 8px;
+  }
+
+  .case-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: white;
+  }
+
+  .case-body { padding: 28px; }
+
+  .case-metrics {
+    display: flex; gap: 20px; margin-bottom: 20px;
+  }
+
+  .metric {
+    flex: 1;
+    background: rgba(60,52,137,.05);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .metric-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px; font-weight: 800;
+    color: var(--roxo); letter-spacing: -1px;
+    display: block;
+  }
+
+  .metric-label {
+    font-size: 11px; color: var(--gray);
+    letter-spacing: .3px;
+  }
+
+  .case-desc {
+    font-size: 13px; line-height: 1.65; color: var(--gray);
+  }
+
+  /* ─── DEPOIMENTOS ─── */
+  .testimonials {
+    background: var(--roxo);
+    padding: 100px 40px;
+  }
+
+  .testimonials .section-tag { color: var(--roxo-lite); }
+  .testimonials .section-title { color: white; }
+  .testimonials .section-title span { color: var(--roxo-lite); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 56px;
+  }
+
+  .testi-card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .testi-stars {
+    color: #f5c518;
+    font-size: 14px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .testi-text {
+    font-size: 14px; line-height: 1.7;
+    color: rgba(255,255,255,.78);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .testi-avatar {
+    width: 42px; height: 42px;
+    background: var(--roxo-mid);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: white;
+  }
+
+  .testi-name {
+    font-weight: 500; font-size: 14px;
+    color: white;
+  }
+
+  .testi-role {
+    font-size: 12px; color: var(--roxo-lite);
+  }
+
+  /* ─── FAQ ─── */
+  .faq {
+    padding: 100px 40px;
+    background: var(--off-white);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(60,52,137,.08);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%; text-align: left;
+    padding: 22px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--roxo-dark);
+    background: none; border: none;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
+    transition: color .2s;
+  }
+
+  .faq-q:hover { color: var(--roxo-mid); }
+
+  .faq-q .icon {
+    width: 22px; height: 22px;
+    background: rgba(83,74,183,.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--roxo-mid);
+    flex-shrink: 0; transition: transform .25s;
+  }
+
+  .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .3s;
+    padding: 0 28px;
+    font-size: 14px; line-height: 1.7;
+    color: var(--gray);
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding-bottom: 22px;
+  }
+
+  /* ─── CTA FINAL ─── */
+  .cta-section {
+    background: var(--roxo-dark);
+    padding: 100px 40px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -2px;
+    color: white; margin-bottom: 20px;
+  }
+
+  .cta-section h2 span { color: var(--roxo-lite); }
+
+  .cta-section p {
+    font-size: 17px; color: rgba(255,255,255,.55);
+    margin-bottom: 44px; max-width: 460px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark);
+    padding: 56px 40px 36px;
+  }
+
+  .footer-top {
+    display: flex; justify-content: space-between;
+    gap: 48px; flex-wrap: wrap;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand .nav-wordmark { font-size: 24px; }
+  .footer-brand p {
+    font-size: 13px; color: rgba(255,255,255,.38);
+    margin-top: 10px; max-width: 220px; line-height: 1.6;
+  }
+
+  .footer-col h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,.5);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a {
+    font-size: 14px; color: rgba(255,255,255,.45);
+    text-decoration: none; transition: color .2s;
+  }
+
+  .footer-col a:hover { color: var(--roxo-lite); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,.25); }
+
+  /* ─── ANIMAÇÕES ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .whatsapp-btn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,.4);
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .whatsapp-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
+  .whatsapp-btn svg { width: 30px; height: 30px; }
+
+  /* ─── MOBILE ─── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: none; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: .3s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { padding: 120px 24px 80px; }
+    .hero-stats { position: static; margin-top: 56px; }
+
+    .services, .how, .cases, .testimonials, .faq, .cta-section, footer { padding-left: 24px; padding-right: 24px; }
+
+    .services-grid, .cases-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="17" r="2.5" fill="white"/>
+        <path d="M7 12.5Q12 9.5 17 12.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M4 8.5Q12 4.5 20 8.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
+        <path d="M1 4.5Q12 -0.5 23 4.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+        <line x1="9.5" y1="21" x2="14.5" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="21" x2="12" y2="19.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">doxo</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://wa.me/5511999999999" class="nav-cta">Fale conosco</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-waves">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <path d="M800 200 Q1000 100 1440 300" stroke="#534AB7" stroke-width="80" fill="none" opacity=".18" stroke-linecap="round"/>
+      <path d="M900 400 Q1100 250 1440 500" stroke="#534AB7" stroke-width="50" fill="none" opacity=".12" stroke-linecap="round"/>
+      <path d="M1000 600 Q1200 450 1440 700" stroke="#534AB7" stroke-width="30" fill="none" opacity=".08" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Para MEI e pequenas empresas</div>
+    <h1>Seu negócio<br><span>visível online.</span></h1>
+    <p class="hero-sub">Sites profissionais, hospedagem e presença digital para quem trabalha de verdade e precisa de resultado.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20um%20orçamento%20para%20meu%20site." class="btn-primary">Quero meu site agora</a>
+      <a href="#servicos" class="btn-ghost">Ver serviços</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <span class="stat-num">+80</span>
+      <span class="stat-label">Sites entregues</span>
+    </div>
+    <div>
+      <span class="stat-num">15d</span>
+      <span class="stat-label">Prazo médio</span>
+    </div>
+    <div>
+      <span class="stat-num">98%</span>
+      <span class="stat-label">Satisfação</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="container">
+    <p class="section-tag reveal">O que fazemos</p>
+    <h2 class="section-title reveal">Tudo que seu negócio<br><span>precisa estar online</span></h2>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 26 26" fill="none" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round">
+            <rect x="2" y="4" width="22" height="16" rx="3"/>
+            <path d="M9 20v3M17 20v3M6 23h14"/>
+            <path d="M7 10h4M7 13.5h8"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Criação de Site</h3>
+        <p class="service-desc">Site profissional que aparece no Google e transforma visitantes em clientes — entregue em até 15 dias.</p>
+        <ul class="service-items">
+          <li>Design exclusivo para sua marca</li>
+          <li>Otimizado para Google (SEO)</li>
+          <li>100% responsivo no celular</li>
+          <li>Formulário + WhatsApp integrado</li>
+          <li>Entrega em até 15 dias</li>
+        </ul>
+        <div class="service-price">A partir de R$997 <span>· pagamento único</span></div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 26 26" fill="none" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round">
+            <ellipse cx="13" cy="13" rx="11" ry="7"/>
+            <path d="M2 13h22M13 6c-2 2-3 4-3 7s1 5 3 7M13 6c2 2 3 4 3 7s-1 5-3 7"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Hospedagem</h3>
+        <p class="service-desc">Seu site no ar 24h por dia com domínio próprio, SSL e suporte ativo. Sem complicação técnica.</p>
+        <ul class="service-items">
+          <li>Domínio .com.br incluso</li>
+          <li>Certificado SSL (cadeado verde)</li>
+          <li>E-mail profissional</li>
+          <li>Backup automático diário</li>
+          <li>Suporte via WhatsApp</li>
+        </ul>
+        <div class="service-price">R$79 <span>/ mês · cancele quando quiser</span></div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 26 26" fill="none" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round">
+            <path d="M13 2L4 7v6c0 5 4 9 9 11 5-2 9-6 9-11V7z"/>
+            <path d="M9 13l3 3 5-5"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Pacote Completo</h3>
+        <p class="service-desc">Site + hospedagem + manutenção mensal. Você foca no seu negócio, a gente cuida de tudo online.</p>
+        <ul class="service-items">
+          <li>Site criado + hospedado</li>
+          <li>Atualizações mensais inclusas</li>
+          <li>Relatório mensal de acessos</li>
+          <li>Suporte prioritário</li>
+          <li>Consultoria de conteúdo</li>
+        </ul>
+        <div class="service-price">R$149 <span>/ mês · tudo incluso</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how" id="como-funciona">
+  <div class="container">
+    <p class="section-tag reveal">Processo</p>
+    <h2 class="section-title reveal">Do zero ao ar em<br><span>4 passos simples</span></h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Diagnóstico</h3>
+        <p class="step-desc">Conversa de 15 minutos para entender seu negócio, seus clientes e o que você precisa. Sem compromisso.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Proposta</h3>
+        <p class="step-desc">Enviamos uma proposta personalizada com escopo, prazo e valor — tudo claro, sem letra miúda.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Criação</h3>
+        <p class="step-desc">Desenvolvemos seu site e você acompanha o progresso. Aprovação em até 2 rodadas de ajuste.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3 class="step-title">No ar</h3>
+        <p class="step-desc">Site publicado, domínio configurado, Google indexado. Seu negócio pronto para receber clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <p class="section-tag reveal">Resultados reais</p>
+    <h2 class="section-title reveal">Negócios que já estão<br><span>no ar com a Doxo</span></h2>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-header">
+          <p class="case-segment">Salão de Beleza</p>
+          <h3 class="case-name">Studio Ana Lima</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="metric">
+              <span class="metric-val">+47</span>
+              <span class="metric-label">agendamentos/mês</span>
+            </div>
+            <div class="metric">
+              <span class="metric-val">15d</span>
+              <span class="metric-label">prazo entrega</span>
+            </div>
+          </div>
+          <p class="case-desc">Perfil sem site para agenda lotada. Com o site integrado ao WhatsApp, clientes agendam sem ligar.</p>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-header">
+          <p class="case-segment">Restaurante</p>
+          <h3 class="case-name">Cantina do Zé</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="metric">
+              <span class="metric-val">3x</span>
+              <span class="metric-label">pedidos online</span>
+            </div>
+            <div class="metric">
+              <span class="metric-val">1°</span>
+              <span class="metric-label">no Google local</span>
+            </div>
+          </div>
+          <p class="case-desc">Cardápio digital e integração com iFood. Hoje aparece na primeira posição quando pesquisam "restaurante italiano" na região.</p>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-header">
+          <p class="case-segment">Clínica</p>
+          <h3 class="case-name">Dr. Paulo Fisio</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-metrics">
+            <div class="metric">
+              <span class="metric-val">62</span>
+              <span class="metric-label">consultas/mês</span>
+            </div>
+            <div class="metric">
+              <span class="metric-val">R$0</span>
+              <span class="metric-label">em ads</span>
+            </div>
+          </div>
+          <p class="case-desc">Só com SEO local e um site bem estruturado, o consultório lotou a agenda sem investir em anúncios.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials">
+  <div class="container">
+    <p class="section-tag reveal">O que dizem</p>
+    <h2 class="section-title reveal">Clientes que <span>confiam</span><br>na Doxo</h2>
+    <div class="testimonials-grid">
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Antes eu dependia só de indicação. Hoje meu site aparece no Google e recebo mensagens todo dia de clientes novos. Melhor investimento que fiz pro meu negócio."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <p class="testi-name">Ana Lima</p>
+            <p class="testi-role">Studio de beleza · São Paulo</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Entregaram tudo dentro do prazo e ficou exatamente como eu queria. O suporte é rápido, qualquer dúvida respondo no WhatsApp mesmo. Recomendo demais."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">J</div>
+          <div>
+            <p class="testi-name">José Carlos</p>
+            <p class="testi-role">Restaurante · Guarulhos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Simples, profissional e sem enrolação. Me explicaram tudo sem jargão técnico e hoje eu mesmo consigo atualizar o site quando preciso. Vale muito o investimento."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div>
+            <p class="testi-name">Paulo Rezende</p>
+            <p class="testi-role">Fisioterapeuta · Mogi das Cruzes</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <p class="section-tag reveal">Dúvidas frequentes</p>
+    <h2 class="section-title reveal">Perguntas que<br><span>todo mundo faz</span></h2>
+    <div class="faq-grid">
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          Preciso entender de tecnologia para ter um site?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">Não. A gente cuida de tudo — criação, publicação e configuração técnica. Você só precisa nos contar o que seu negócio faz e como quer aparecer.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          Em quanto tempo meu site fica pronto?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">O prazo padrão é de 10 a 15 dias úteis após aprovação do briefing e pagamento. Projetos com mais páginas podem levar até 20 dias.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          O site vai aparecer no Google?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">Sim. Todos os nossos sites são entregues com SEO básico configurado — título, descrição, sitemap e integração com Google Search Console. O posicionamento melhora com o tempo.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          Posso cancelar a hospedagem quando quiser?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">Sim, sem multa ou fidelidade. Você pode cancelar a qualquer momento. O domínio e os arquivos do site são seus — entregamos tudo ao cancelar.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          Vocês fazem site para qualquer tipo de negócio?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">Trabalhamos principalmente com MEI, autônomos e pequenas empresas: salões, clínicas, restaurantes, lojas, prestadores de serviço, consultores e profissionais liberais.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          E se eu quiser fazer alterações depois?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-a">Clientes do plano mensal têm alterações de conteúdo inclusas. Para sites com pagamento único, cobrámos uma taxa por hora de manutenção — sempre avisamos antes.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Pronto para estar<br><span>online de verdade?</span></h2>
+    <p>Diagnóstico gratuito, sem compromisso. Vamos ver o que dá pra fazer pelo seu negócio.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20meu%20site." class="btn-primary">Falar no WhatsApp agora</a>
+      <a href="mailto:contato@doxo.com.br" class="btn-ghost">Enviar e-mail</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+          <div class="nav-icon" style="width:34px;height:34px;border-radius:8px;">
+            <svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px;">
+              <circle cx="12" cy="17" r="2.5" fill="white"/>
+              <path d="M7 12.5Q12 9.5 17 12.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 8.5Q12 4.5 20 8.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
+              <line x1="9.5" y1="21" x2="14.5" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="21" x2="12" y2="19.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="nav-wordmark">doxo</span>
+        </div>
+        <p>Seu negócio online.<br>Do jeito certo.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Criação de site</a></li>
+          <li><a href="#servicos">Hospedagem</a></li>
+          <li><a href="#servicos">Pacote completo</a></li>
+          <li><a href="#servicos">Manutenção</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5511999999999">(11) 9 9999-9999</a></li>
+          <li><a href="mailto:contato@doxo.com.br">contato@doxo.com.br</a></li>
+          <li><a href="https://instagram.com/doxodigital">@doxodigital</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Doxo Digital Studio. Todos os direitos reservados.</p>
+      <p>CNPJ 00.000.000/0001-00</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5511999999999?text=Olá!%20Vim%20pelo%20site%20da%20Doxo." class="whatsapp-btn" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="white">
+    <path d="M16 3C9 3 3 9 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.7A13 13 0 0 0 16 29c7 0 13-6 13-13S23 3 16 3zm6.4 17.8c-.3.8-1.5 1.5-2 1.6-.6.1-1.1.1-3.5-.7-3-1-4.9-4-5-4.2-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.4 1.1-2.7.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.6.7c-.1.1-.2.3-.1.5.4.7 1 1.4 1.7 2 .7.6 1.5 1 2.2 1.2.2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.4v.7z"/>
+  </svg>
+</a>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
